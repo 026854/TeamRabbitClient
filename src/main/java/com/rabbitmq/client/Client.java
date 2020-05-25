@@ -20,10 +20,15 @@ public class Client {
 
     AtomicInteger index = new AtomicInteger(0);
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    
+    
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
-    public void send() {
-        StringBuilder builder = new StringBuilder("index : ");
+    public void send() throws JsonProcessingException {
+        //StringBuilder builder = new StringBuilder(this.index.incrementAndGet());
+        StringBuilder builder = new StringBuilder("");
         builder.append(this.index.incrementAndGet());
+
 
         //랜덤 키 생성
         Random random = new Random();
@@ -34,13 +39,13 @@ public class Client {
             key = "normal";
         }
 
-        builder.append(' ').append(key);
-        //Message message = new Message(builder.toString());
-        String message = builder.toString();
+        //Message message = new Message(builder.toString())
+        Message message = new Message("C:\\Users\\user\\Desktop\\daou", 10, "doc", "pdf",builder.toString()); 
+        String jsonMessage = objectMapper.writeValueAsString(message);
 
         //String json = objectMapper.writeValueAsString(message);
-        rabbitTemplate.convertAndSend(exchange.getName(), key, message);
-        System.out.println(" [x] Sent to "+exchange.getName()+" "+key+"  '" + message + "'");
+        rabbitTemplate.convertAndSend(exchange.getName(), key, jsonMessage);
+        System.out.println(" [x] Sent to "+exchange.getName()+" "+key+"  '" +message.getId()  + "'");
 
 
 
