@@ -1,6 +1,8 @@
-package com.rabbitmq.client;
+package com.rabbitmq.client.vo;
 
 
+import com.rabbitmq.client.vo.AfterType;
+import com.rabbitmq.client.vo.BeforeType;
 import lombok.Getter;
 import lombok.Setter;
 

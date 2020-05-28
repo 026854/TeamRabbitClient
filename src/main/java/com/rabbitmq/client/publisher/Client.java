@@ -1,7 +1,8 @@
-package com.rabbitmq.client;
+package com.rabbitmq.client.publisher;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rabbitmq.client.vo.Message;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class Client {
         }
 
         //Message message = new Message(builder.toString())
-        Message message = new Message("C:\\Users\\user\\Desktop\\daou", 10, "doc", "pdf",builder.toString()); 
+        Message message = new Message("C:\\Users\\user\\Desktop\\daou", 10, "doc", "pdf",builder.toString());
         String jsonMessage = objectMapper.writeValueAsString(message);
 
         //String json = objectMapper.writeValueAsString(message);

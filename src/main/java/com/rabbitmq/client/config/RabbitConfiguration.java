@@ -1,5 +1,6 @@
-package com.rabbitmq.client;
+package com.rabbitmq.client.config;
 
+import com.rabbitmq.client.publisher.Client;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
