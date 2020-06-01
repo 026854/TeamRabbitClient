@@ -5,18 +5,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public enum AfterType {
+public enum Base {
 	
-	TTIF,
-	TTS,
-	COVER;
+	MILK,
+	WATER,
+	ADE;
 	
-	private static final List<AfterType> VALUES = (List<AfterType>) Collections.unmodifiableList(Arrays.asList(values()));
+	private static final List<Base> VALUES = (List<Base>) Collections.unmodifiableList(Arrays.asList(values()));
 	
 	private static final int SIZE = VALUES.size();
 	private static final Random RANDOM = new Random();
 	
-	public static String randomBeforeType() {
+	public static String randomBaseType() {
 		return VALUES.get(RANDOM.nextInt(SIZE)).toString();
 	}
 }
