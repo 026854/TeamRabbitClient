@@ -25,6 +25,11 @@ public class RabbitConfiguration {
     public Client client(){ return new Client();}
 
     @Bean
+    public Manager manager() {
+        return new Manager();
+    }
+
+    @Bean
     public MessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();
     }
@@ -36,10 +41,7 @@ public class RabbitConfiguration {
         rabbitTemplate.setMessageConverter(messageConverter);
         return  rabbitTemplate;
     }
-    @Bean
-    public Manager manager() {
-        return new Manager();
-    }
+
 
     @Bean
     public Queue resultQueue() {
