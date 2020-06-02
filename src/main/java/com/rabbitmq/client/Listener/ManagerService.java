@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManagerService {
 
-    //private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public void receive(String message) throws JsonProcessingException {
-        //Message getMessage = objectMapper.readValue(message,Message.class);
+        Message getMessage = objectMapper.readValue(message,Message.class);
 
-        System.out.println("번 주문이 도착했습니다.");
+        System.out.println(getMessage.getId()+"번 주문이 도착했습니다.");
     }
 }

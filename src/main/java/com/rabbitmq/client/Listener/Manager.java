@@ -13,8 +13,6 @@ public class Manager {
 
     @RabbitListener(queues= RESULT_QUEUE_NAME)
     public void resultReceiver(String message) throws InterruptedException, JsonMappingException, JsonProcessingException {
-
-        System.out.println("dur");
-        //service.receive(message);
+        service.receive(message);
     }
 }
