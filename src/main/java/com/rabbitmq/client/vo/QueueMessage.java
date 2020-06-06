@@ -6,26 +6,26 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Message {
+public class QueueMessage {
 	private String id;
 	private String menu, base, core;
 	private BeverageType beverageType;
 
 
-	public Message() {
+	public QueueMessage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Message(String id,String menu) {
+	public QueueMessage(String id, String menu) {
 		super();
 		this.id = id;
 		this.menu = menu;
 	}
-	public Message(String id){
+	public QueueMessage(String id){
 		super();
 		this.id = id;
 	}
-	public Message(String id,String menu,String base,String core,BeverageType beverageType) {
+	public QueueMessage(String id, String menu, String base, String core, BeverageType beverageType) {
 		super();
 		this.id = id;
 		this.menu = menu;
