@@ -38,8 +38,7 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory,
-                                  MessageConverter messageConverter){
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter){
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
 
@@ -58,8 +57,6 @@ public class RabbitConfiguration {
 
     @Bean
     public RabbitAdmin rabbitAdmin(RabbitTemplate template){
-
-
         return new RabbitAdmin(template);
     }
 }

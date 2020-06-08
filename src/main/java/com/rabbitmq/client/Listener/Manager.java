@@ -14,8 +14,6 @@ public class Manager {
 
     @RabbitListener(queues= RESULT_QUEUE_NAME)
     public void resultReceiver(Message message) throws Exception {
-
-
         service.receive(message);
     }
 }
