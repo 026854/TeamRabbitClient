@@ -11,6 +11,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -78,14 +79,15 @@ public class Client {
 // }
 
 //Message message = new Message(builder.toString())
-        queueMessage = new QueueMessage(IDbuilder.toString(),"아아", Base.WATER.toString(), Core.BEAN.toString(), BeverageType.COFFEE);
-        keyBuilder.append("coffee");
+        queueMessage = new QueueMessage(IDbuilder.toString(),"아아", Base.WATER.toString(), Core.BEAN.toString(), BeverageType.COFFEE,new Date());
+                keyBuilder.append("coffee");
 
         String jsonMessage = objectMapper.writeValueAsString(queueMessage);
         //org.springframework.amqp.core.Message message1 = MessageBuilder.withBody(jsonMessage.getBytes()).set
 //String json = objectMapper.writeValueAsString(message);
         rabbitTemplate.convertAndSend(exchange.getName(), keyBuilder.toString(), jsonMessage,m ->{
             m.getMessageProperties().getHeaders().put("x-death",0);
+            m.getMessageProperties().getHeaders().put("x-delay",10);
             return m;
         });
         System.out.println(" [x] Sent to " + exchange.getName() + " " + keyBuilder.toString() + " '" + queueMessage.getId() + "'" + "ordered : "+ queueMessage.getMenu());
